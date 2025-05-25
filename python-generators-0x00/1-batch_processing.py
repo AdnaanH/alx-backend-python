@@ -24,3 +24,12 @@ def batch_processing(batch_size):
         for user in batch:
             if user['age'] > 25:
                 yield user
+
+
+def get_users_older_than_25(batch_size):
+    users = []
+    for batch in stream_users_in_batches(batch_size):
+        for user in batch:
+            if user['age'] > 25:
+                users.append(user)
+    return users  # Now returns a list, not a generator
